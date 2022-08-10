@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ApiController;
+use App\Http\Controllers\PlaylistController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
@@ -26,9 +26,10 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', [HomeController::class, 'show'])->name('home');
 
-Route::post('/api', [ApiController::class, 'index'])->name('api');
+Route::post('/api', [PlaylistController::class, 'index'])->name('api');
 
-Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
+Route::get('/playlist', [DashboardController::class, 'showPlaylist'])->name('playlist');
 
 Route::get('/login', [LoginController::class, 'show'])->name('login')->middleware('guest');
 Route::post('/loginSubmit', [LoginController::class, 'store'])->name('loginSubmit');

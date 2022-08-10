@@ -1,7 +1,9 @@
 @extends('components/layout')
 
 @section('main')
-    <h1 class="mt-8 ml-16 text-4xl font-medium">Create account</h1>
+    <div class="flex justify-center">
+        <h1 class="mt-12 text-3xl">Create PODCASTnote account</h1>
+    </div>
 
     <div class="mx-auto my-10 w-full max-w-lg">
         <div class="flex min-h-full items-center justify-start bg-white">
@@ -57,7 +59,9 @@
                         @endif
                     </div>
                 </div>
-                <button type="submit" class="mt-5 rounded-md bg-black px-10 py-2 text-white">Sign up</button>
+                <div class="flex flex-col items-center justify-center py-4">
+                    <button type="submit" class="mt-5 rounded-md bg-black px-10 py-2 text-white hover:bg-yellow-300 hover:text-black">Sign up</button>
+    	        </div>
             </form>
         </div>
     </div>

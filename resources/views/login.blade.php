@@ -2,20 +2,15 @@
 
 @section('main')
 
-    <h1 class="mt-8 ml-16 text-4xl font-medium">Login</h1>
+    <div class="flex justify-center">
+        <h1 class="mt-12 text-3xl">Login</h1>
+    </div>
 
     <div class="mx-auto my-10 w-full max-w-lg">
         <div class="flex min-h-full items-center justify-start bg-white">
 
         <form class="mt-0 w-full" method="POST" action="{{ route('loginSubmit') }}">
-            <!-- CROSS Site Request Forgery Protection -->
             @csrf
-            <!-- Flash message to show successful account creation -->
-            @if (Session::has('success'))
-                <div class="text-green-500 py-4">
-                    <p>{{ Session::get('success') }}</p>
-                </div>
-            @endif
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 <div class="grid gap-6 sm:grid-cols-2">
                     <div class="relative z-0 col-span-2">
@@ -33,9 +28,9 @@
                         @endif
                     </div>
                 </div>
-                <button type="submit" class="mt-5 rounded-md bg-black px-10 py-2 text-white">Login</button>
-                <div class="py-4">
-                    <p class="content-center text-xs"><strong>Not registered yet?<span><a class="content-center text-xs text-green-600" href="{{ route('register') }}"> Create your account here</a></span></strong></p>
+                <div class="flex flex-col items-center justify-center py-4">
+                    <button type="submit" class="mt-5 rounded-md bg-black px-10 py-2 text-white hover:bg-yellow-300 hover:text-black">Login</button>
+                    <p class="mt-2 content-center text-xs"><strong>Not registered yet?<span><a class="content-center text-xs text-green-600 hover:text-gray-900" href="{{ route('register') }}"> Create your account here.</a></span></strong></p>
                 </div>
             </form>
         </div>

@@ -16,6 +16,6 @@ class LogoutController extends Controller
 
         Auth::logout();
 
-        return Redirect::route('dashboard')->with('success', 'Goodbye!');
+        return Redirect::route('home')->with('success', 'Goodbye!');
     }
 }
