@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Podcast;
 
 class DashboardController extends Controller
 {
@@ -58,6 +59,21 @@ class DashboardController extends Controller
     public function showPlaylist(Request $request)
     {
         return view('playlist');
+    }
+
+    // Add podcast episode to database
+    public function store(Request $request)
+    {
+        $request->validate([
+            'track' => 'required',
+            'artist' => 'required',
+            'image_url' => 'required',
+            'track_uri' => 'required',
+        ]);
+    
+        Podcast::create($request->all());
+     
+        return view('dashboard');
     }
 
 }

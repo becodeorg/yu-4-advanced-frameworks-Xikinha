@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\Podcast;
 use Spotify;
 
 class PlaylistController extends Controller
@@ -57,7 +58,7 @@ class PlaylistController extends Controller
 
     // }
 
-    public function showPlaylist(Request $request)
+    public function index(Request $request)
     {
         // Get podcasts & number of entries
         $podcasts = DB::table('podcasts')->get()->where('soft_delete', 0);
@@ -82,6 +83,33 @@ class PlaylistController extends Controller
 
     }
 
+    public function show(Request $request)
+    {
+        $url = $request->fullUrl();
+        $id = trim($url, "http://localhost:8000/show?=");
+        // dd($id);
+
+        $podcast = DB::table('podcasts')->get()->where('id', $id);
+        // dd($podcast);
+        // dd($podcast[0]->track);
+
+        $value = $id - 1;
+        // dd($value);
+
+        $track = $podcast[$value]->track;
+        $artist = $podcast[$value]->artist;
+        $image_url = $podcast[$value]->image_url;
+        $track_uri = $podcast[$value]->track_uri;
+        $notes = $podcast[$value]->notes;
+        
+        return view('show', ['track' => $track, 'artist' => $artist, 'image_url' => $image_url, 'track_uri' => $track_uri, 'notes' => $notes]);
+    } 
+
+    public function edit(Podcast $podcast)
+    {
+        return view('edit',compact('podcast'));
+    }
+
     public function softDelete(Request $request)
     {
         DB::table('podcasts')->update(['soft_delete'=>'1']);
@@ -90,12 +118,12 @@ class PlaylistController extends Controller
 
     }
 
-    public function addNotes(Request $request)
-    {
-        $value = [$_POST['id']];
-        dd('value');
-        // return view('playlist', ['empty' => $empty]);
+    // public function addNotes(Request $request)
+    // {
+    //     $value = [$_POST['id']];
+    //     dd('value');
+    //     // return view('playlist', ['empty' => $empty]);
 
-    }
+    // }
 
 }

@@ -30,8 +30,9 @@ Route::post('/discover', [DashboardController::class, 'showSearch'])->name('sear
 Route::get('/discover', [DashboardController::class, 'showDashboard'])->name('dashboard');
 // Route::get('/playlist', [DashboardController::class, 'showPlaylist'])->name('playlist');
 
-Route::get('/playlist', [PlaylistController::class, 'showPlaylist'])->name('playlist');
-Route::post('/playlist', [PlaylistController::class, 'addNotes'])->name('delete');
+Route::get('/playlist', [PlaylistController::class, 'index'])->name('playlist');
+Route::get('/show', [PlaylistController::class, 'show'])->name('show');
+Route::get('/addNotes', [PlaylistController::class, 'edit'])->name('edit');
 Route::post('/playlist', [PlaylistController::class, 'softDelete'])->name('delete');
 
 Route::get('/login', [LoginController::class, 'show'])->name('login')->middleware('guest');

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('image_url');
             $table->string('track_uri');
             $table->text('notes');
-            $table->string('soft_delete');
+            $table->boolean('soft_delete');
             $table->timestamps();
         });
     }
