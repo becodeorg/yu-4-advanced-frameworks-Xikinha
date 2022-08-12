@@ -26,10 +26,13 @@ use App\Http\Controllers\RegisterController;
 
 Route::get('/', [HomeController::class, 'show'])->name('home');
 
-Route::post('/api', [PlaylistController::class, 'index'])->name('api');
+Route::post('/discover', [DashboardController::class, 'showSearch'])->name('search');
+Route::get('/discover', [DashboardController::class, 'showDashboard'])->name('dashboard');
+// Route::get('/playlist', [DashboardController::class, 'showPlaylist'])->name('playlist');
 
-Route::get('/dashboard', [DashboardController::class, 'showDashboard'])->name('dashboard');
-Route::get('/playlist', [DashboardController::class, 'showPlaylist'])->name('playlist');
+Route::get('/playlist', [PlaylistController::class, 'showPlaylist'])->name('playlist');
+Route::post('/playlist', [PlaylistController::class, 'addNotes'])->name('delete');
+Route::post('/playlist', [PlaylistController::class, 'softDelete'])->name('delete');
 
 Route::get('/login', [LoginController::class, 'show'])->name('login')->middleware('guest');
 Route::post('/loginSubmit', [LoginController::class, 'store'])->name('loginSubmit');

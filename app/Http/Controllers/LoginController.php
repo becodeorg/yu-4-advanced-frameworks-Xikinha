@@ -19,25 +19,20 @@ class LoginController extends Controller
     // Handle login request
     public function store(Request $request)
     {
-        // dd($request->input('email'));
-
         if (filter_var($request->input('email'), FILTER_VALIDATE_EMAIL)) {
             echo "Email address is valid";
             $attributes = $this->validate($request, [
-                'email' => 'required|email|exists:users,email',
+                'email' => 'required|exists:users,email',
                 'password' => 'required',
             ]);
-        } else {
-            echo "No email address";
-            $attributes = $this->validate($request, [
-                'email' => 'required|exists:users,username',
-                'password' => 'required',
-            ]);
+            print_r($attributes);
         }
+
+        // dd($request->input('email'));
         
         if (!Auth::attempt($attributes)) {
             throw ValidationException::withMessages([
-                'email' => 'Your username/email is not registered.',
+                'email' => 'Your email is not registered.',
                 'password' => 'Your password is incorrect.'
             ]);
         }

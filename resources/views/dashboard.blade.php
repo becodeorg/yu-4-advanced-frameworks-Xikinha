@@ -4,16 +4,21 @@
 
     @auth
 
-        <h1 class="mt-8 ml-16 text-3xl">Welcome, {{ auth()->user()->username }}!</h1>
+        <h1 class="mt-10 ml-16 text-3xl">Welcome, {{ auth()->user()->username }}!</h1>
     
-        <!-- <form class="mt-0" method="POST" action="{{ route('api') }}">
+        <!-- <form class="mt-0" method="POST" action="{{ route('playlist') }}">
             @csrf
             <button type="submit" class="mt-5 ml-16 rounded-md bg-black px-10 py-2 text-white">Click here</button>
         </form> -->
 
+        <form class="mt-0" method="POST" action="{{ route('search') }}">
+            @csrf
+            <button type="submit" class="mt-5 ml-16 rounded-md bg-black px-10 py-2 text-white">Click here</button>
+        </form>
+
         <div class="mx-auto my-10 w-full max-w-lg">
             <div class="flex min-h-full items-center justify-start bg-white">
-                <form class="mt-0 w-full" method="POST" action="{{ route('api') }}">
+                <form class="mt-0 w-full" method="POST" action="{{ route('search') }}">
                     @csrf
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                     <div class="grid gap-6 sm:grid-cols-2">

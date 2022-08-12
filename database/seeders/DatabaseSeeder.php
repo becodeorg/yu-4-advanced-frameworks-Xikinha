@@ -19,8 +19,8 @@ class DatabaseSeeder extends Seeder
 
         // Create specific user with known password
         \App\Models\User::factory()->create([
-            'username' => 'Tester',
-            'email' => 'test@example.com',
+            'username' => 'Franziska',
+            'email' => 'franziska@mail.com',
             'password' => bcrypt('password'),
         ]);
     }
