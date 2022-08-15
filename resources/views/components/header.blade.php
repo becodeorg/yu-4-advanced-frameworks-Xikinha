@@ -1,6 +1,7 @@
 <script src="//unpkg.com/alpinejs" defer></script>
 
-<nav class="z-0 relative" x-data="{open:false,menu:false, lokasi:false}">
+<nav class="z-0 relative"
+x-data="{open:false,menu:false, lokasi:false}">
   <div class="relative z-10 bg-yellow-300 shadow">
     <div class="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
       <div class="relative flex items-center justify-between h-16">

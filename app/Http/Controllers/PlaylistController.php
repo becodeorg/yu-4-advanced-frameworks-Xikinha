@@ -12,7 +12,7 @@ class PlaylistController extends Controller
     // public function __construct()
     // {
         // Get tracks with specific title
-        // $test = Spotify::searchTracks('TED Talks Daily')->get();
+        // $test = Spotify::searchTracks('Me kemaste')->get();
         // dd($test);
         
         // Get playlist
@@ -58,13 +58,11 @@ class PlaylistController extends Controller
 
     // }
 
-    public function index(Request $request)
+    public function index()
     {
         // Get podcasts & number of entries
-        $podcasts = DB::table('podcasts')->get()->where('soft_delete', 0);
+        $podcasts = DB::table('podcasts')->where('soft_delete', 0)->get();
         $amount = $podcasts->count();
-        // $amount = DB::table('podcasts')->count();
-        // $uri = $podcasts[0]->track_uri;
         // dd($podcasts, $amount);
 
         if ($amount == 0) {
@@ -85,45 +83,69 @@ class PlaylistController extends Controller
 
     public function show(Request $request)
     {
-        $url = $request->fullUrl();
-        $id = trim($url, "http://localhost:8000/show?=");
-        // dd($id);
-
+        // $trim = trim($request->fullUrl(), 'http://127.0.0.1:8000/show');
+        // $id = trim($trim, '?=');
+        $id = trim(parse_url($request->fullUrl())['query'], '=');
         $podcast = DB::table('podcasts')->get()->where('id', $id);
-        // dd($podcast);
-        // dd($podcast[0]->track);
+        // dd($id, $podcast);
 
-        $value = $id - 1;
-        // dd($value);
+        $podcast_track = DB::table('podcasts')->get()->where('id', $id)->pluck('track');
+        $podcast_artist = DB::table('podcasts')->get()->where('id', $id)->pluck('artist');
+        $podcast_image = DB::table('podcasts')->get()->where('id', $id)->pluck('image_url');
+        $podcast_uri = DB::table('podcasts')->get()->where('id', $id)->pluck('track_uri');
+        $podcast_notes = DB::table('podcasts')->get()->where('id', $id)->pluck('notes');
 
-        $track = $podcast[$value]->track;
-        $artist = $podcast[$value]->artist;
-        $image_url = $podcast[$value]->image_url;
-        $track_uri = $podcast[$value]->track_uri;
-        $notes = $podcast[$value]->notes;
+        $track = $podcast_track[0];
+        $artist = $podcast_artist[0];
+        $image_url = $podcast_image[0];
+        $track_uri = $podcast_uri[0];
+        $notes = $podcast_notes[0];
+
+        // dd($podcast, $podcast_track, $track, $artist, $image_url, $track_uri, $notes);
         
         return view('show', ['track' => $track, 'artist' => $artist, 'image_url' => $image_url, 'track_uri' => $track_uri, 'notes' => $notes]);
     } 
 
-    public function edit(Podcast $podcast)
+    public function edit(Request $request)
     {
-        return view('edit',compact('podcast'));
+        $id = trim(parse_url($request->fullUrl())['query'], '=');
+        $podcast = DB::table('podcasts')->where('id', $id)->get();
+
+        $track = $podcast[0]->track;
+        $artist = $podcast[0]->artist;
+        $notes = $podcast[0]->notes;
+
+        // dd($id, $podcast, $track, $artist, $notes);
+        
+        return view('edit', ['track' => $track, 'artist' => $artist, 'notes' => $notes]);
+    } 
+
+    public function storeNotes(Request $request)
+    {
+        // dd($request);
+
+        $track = $request->input('track');
+        $artist = $request->input('artist');
+        $notes = $request->notes;
+        // dd($track, $artist, $notes);
+
+        // $podcast = DB::table('podcasts')->where('track', $track)->where('artist', $artist)->get();
+        // dd($podcast);
+        DB::table('podcasts')->where('track', $track)->where('artist', $artist)->update(['notes' => $notes]);
+        
+        return view('home');
+
     }
 
     public function softDelete(Request $request)
     {
-        DB::table('podcasts')->update(['soft_delete'=>'1']);
-        // dd('test');
-        return $this->showPlaylist();
+        $id = trim(parse_url($request->fullUrl())['query'], '=');
+        // $podcast = DB::table('podcasts')->where('id', $id)->get();
+        // dd($id, $podcast);
+        DB::table('podcasts')->where('id', $id)->update(['soft_delete'=>1]);
+
+        return view('home');
 
     }
-
-    // public function addNotes(Request $request)
-    // {
-    //     $value = [$_POST['id']];
-    //     dd('value');
-    //     // return view('playlist', ['empty' => $empty]);
-
-    // }
 
 }

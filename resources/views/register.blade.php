@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center py-4">
-                    <button type="submit" class="mt-5 rounded-md bg-black px-10 py-2 text-white hover:bg-yellow-300 hover:text-black">Sign up</button>
+                    <button type="submit" class="mt-5 rounded-md bg-black px-4 py-2 text-white hover:bg-yellow-300 hover:text-black">Sign up</button>
     	        </div>
             </form>
         </div>

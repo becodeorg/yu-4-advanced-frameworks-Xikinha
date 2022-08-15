@@ -20,15 +20,13 @@ class LoginController extends Controller
     public function store(Request $request)
     {
         if (filter_var($request->input('email'), FILTER_VALIDATE_EMAIL)) {
-            echo "Email address is valid";
+            // echo "Email address is valid";
             $attributes = $this->validate($request, [
                 'email' => 'required|exists:users,email',
                 'password' => 'required',
             ]);
-            print_r($attributes);
+            // print_r($attributes);
         }
-
-        // dd($request->input('email'));
         
         if (!Auth::attempt($attributes)) {
             throw ValidationException::withMessages([

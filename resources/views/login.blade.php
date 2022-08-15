@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col items-center justify-center py-4">
-                    <button type="submit" class="mt-5 rounded-md bg-black px-10 py-2 text-white hover:bg-yellow-300 hover:text-black">Login</button>
+                    <button type="submit" class="mt-5 rounded-md bg-black px-4 py-2 text-white hover:bg-yellow-300 hover:text-black">Login</button>
                     <p class="mt-4 content-center text-xs"><strong>Not registered yet?<span><a class="content-center text-xs text-green-600 hover:text-gray-900" href="{{ route('register') }}"> Create your account here.</a></span></strong></p>
                 </div>
             </form>

@@ -12,7 +12,9 @@
 
     @include('components/header')
 
-    @yield('main')
+    <div class="min-h-screen justify-between">
+        @yield('main')
+    </div>
 
     @include('components/footer')
 

@@ -13,13 +13,13 @@
             </div>
         </div>
 
-        <div class="flex flex-wrap ml-16 mr-16 mb-8 justify-center">
-            <div class="w-72 m-2 mb-8 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex flex-wrap mt-0 ml-16 mr-16 mb-8 justify-center">
+            <div class="w-72 m-2 mb-8 bg-gradient-to-b from-black via-black rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                 <div class="object-center mt-4">
                     <img class="rounded-lg w-40 mx-auto" src="{{ $image_url }}" alt="Podcast image">
                 </div>    
-                <strong><p class="ml-4 pt-2"> {{ $track }}</p></strong>
-                <p class="ml-4 pb-2 text-sm">By {{ $artist }} </p>
+                <strong><p class="ml-4 pt-2 text-white">{{ $track }}</p></strong>
+                <p class="ml-4 pb-2 text-sm text-white">{{ $artist }} </p>
                 <div class="flex justify-center">
                     <iframe src="<?php echo 'https://embed.spotify.com/?uri=' . $track_uri; ?>" width="250" height="80" frameborder="0" allowtransparency="true"></iframe>
                 </div>
