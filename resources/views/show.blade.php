@@ -9,7 +9,7 @@
                 <h1 class="text-3xl">Summary</h1>
             </div>
             <div class="float-right mt-12 mb-4 mr-16">
-                <a class="rounded-md bg-black px-4 py-2 text-white hover:bg-yellow-300 hover:text-black" href="{{ route('playlist') }}">Back to overview</a>
+                <a class="rounded-md bg-black px-4 py-2 text-white text-sm font-semibold hover:bg-yellow-400 hover:text-black" href="{{ route('playlist') }}">Back to overview</a>
             </div>
         </div>
 
@@ -26,9 +26,9 @@
                 <div>
                     <strong><p class="ml-4 mt-2 pb-2 text-bold">My notes</p></strong>
                     <?php if($notes == null) : ?>
-                        <p class="ml-4 pb-2">-</p>
+                        <p class="ml-4 pb-6">-</p>
                     <?php else : ?>
-                        <p class="ml-4 pb-2"><?=$notes?></p>
+                        <p class="ml-4 pb-6"><?=$notes?></p>
                     <?php endif; ?>
                 </div>
                 

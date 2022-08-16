@@ -25,6 +25,15 @@ class DashboardController extends Controller
     // Get random track to display suggestion
     public function showRandom()
     {
+        // No tracks available for podcast playlist
+        // $playlist = Spotify::playlist('550brlqlMd2hTvmV3FW6O3')->get();
+        // Tracks available for song playlist
+        // $playlist = Spotify::playlist('51B1RYepg13jOB73HfjXbJ')->get();
+        // $episode = $playlist['tracks']['items'][0];
+        // dd($playlist, $episode);
+        // Id not working
+        // $podcast = Spotify::show('1VXcH8QHkjRcTCEd88U3ti')->get();
+
         // Get song playlist
         $playlist = Spotify::playlist('37i9dQZF1DWYey22ryYM8U')->get();
         $track_id = rand(0,50);

@@ -8,7 +8,7 @@
 
         @if($empty)
 
-            <p class="ml-16 mr-16 py-4">You have no episodes in your playlist. <span><a class="underline hover:text-gray-900" href="{{ route('dashboard') }}">Click here</a> to discover new podcasts.</span></p>
+            <p class="ml-16 mr-16 py-4">You have no tracks in your playlist. <span><a class="text-green-600 hover:text-gray-900" href="{{ route('dashboard') }}">Click here</a> to discover new tracks.</span></p>
 
         @else
 
@@ -26,9 +26,9 @@
                         <div class="flex flex-col items-center justify-center py-4">
                             <form method="POST" action="{{ route('delete', $podcast->id) }}">
                                 @csrf
-                                <a class="rounded-md text-sm font-semibold bg-black mx-2 px-2 py-2 text-white hover:bg-yellow-300 hover:text-black" href="{{ route('show', $podcast->id) }}">Show</a>
-                                <a class="rounded-md text-sm font-semibold bg-black mx-2 px-2 py-2 text-white hover:bg-yellow-300 hover:text-black" href="{{ route('edit', $podcast->id) }}">Add notes</a>
-                                <a class="rounded-md text-sm font-semibold bg-black mx-2 px-2 py-2 text-white hover:bg-yellow-300 hover:text-black" href="{{ route('delete', $podcast->id) }}">Delete</a>
+                                <a class="rounded-md text-sm font-semibold bg-black mx-2 px-2 py-2 text-white hover:bg-yellow-400 hover:text-black" href="{{ route('show', $podcast->id) }}">Show</a>
+                                <a class="rounded-md text-sm font-semibold bg-black mx-2 px-2 py-2 text-white hover:bg-yellow-400 hover:text-black" href="{{ route('edit', $podcast->id) }}">Add notes</a>
+                                <a class="rounded-md text-sm font-semibold bg-black mx-2 px-2 py-2 text-white hover:bg-yellow-400 hover:text-black" href="{{ route('delete', $podcast->id) }}">Delete</a>
                             </form>
                         </div>
                     </div>

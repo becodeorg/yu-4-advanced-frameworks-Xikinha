@@ -9,7 +9,7 @@
                 <h1 class="text-3xl">Search result</h1>
             </div>
             <div class="float-right mt-12 mb-4 mr-16">
-                <a class="rounded-md bg-black px-4 py-2 text-white hover:bg-yellow-300 hover:text-black" href="{{ route('dashboard') }}">Back to search</a>
+                <a class="rounded-md bg-black px-4 py-2 text-white text-sm font-semibold hover:bg-yellow-400 hover:text-black" href="{{ route('dashboard') }}">Back to search</a>
             </div>
         </div>
 
@@ -30,7 +30,7 @@
                         <input type="hidden" id="trackUri" name="track_uri" value="{{ $track_uri }}">
                     </div>
                     <div class="flex flex-col items-center justify-center py-4">
-                        <button type="submit" class="text-sm mx-2 rounded-md bg-black px-2 py-2 text-white hover:bg-yellow-300 hover:text-black">Add</button>
+                        <button type="submit" class="text-sm mx-2 rounded-md bg-black px-2 py-2 text-white hover:bg-yellow-400 hover:text-black">Add</button>
                     </div> 
                 </form>              
             </div>
