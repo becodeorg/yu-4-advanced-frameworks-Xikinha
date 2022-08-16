@@ -8,9 +8,9 @@ x-data="{open:false,menu:false, lokasi:false}">
         <div class="flex items-center px-2 lg:px-0">
           <a class="flex-shrink-0" href="{{route('home')}}">
             <img class="block lg:hidden h-8" src="/images/logo.png" alt="Logo">
-            <img class="hidden lg:block h-12" src="/images/logo.png" alt="Logo">
+            <img class="hidden lg:block h-10" src="/images/logo.png" alt="Logo">
           </a>
-          <div class="hidden lg:block lg:ml-2">
+          <div class="hidden sm:flex sm:ml-2">
             <div class="flex">
               @auth
                 <a href="{{route('home')}}" class="ml-4 px-3 py-2 rounded-md text-sm leading-5 font-medium text-gray-800 font-semibold hover:bg-yellow-400 hover:text-white transition duration-150 ease-in-out cursor-pointer focus:outline-none focus:text-white focus:bg-gray-700 ">Home</a>
@@ -21,7 +21,7 @@ x-data="{open:false,menu:false, lokasi:false}">
           </div>
         </div>
 
-        <div class="flex-1 flex justify-center px-2 sm:ml-6 sm:justify-end">
+        <div class="flex-1 sm:flex justify-center px-2 sm:ml-6 sm:justify-end hidden">
           @auth
             <a href="{{route('logout')}}" class="ml-4 px-3 py-2 rounded-md text-sm leading-5 font-medium text-gray-800 font-semibold hover:bg-yellow-400 hover:text-white transition duration-150 ease-in-out cursor-pointer focus:outline-none focus:text-white focus:bg-gray-700 ">Logout</a>
           @else
@@ -42,15 +42,17 @@ x-data="{open:false,menu:false, lokasi:false}">
         </div>
       </div>
     </div>
-    <div x-show="menu" class="block md:hidden">
+    <div x-show="menu" class="flex sm:hidden">
       <div class="px-2 pt-2 pb-3">
         @auth
           <a href="{{route('home')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold font-medium hover:bg-yellow-400 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Home</a>
           <a href="{{route('dashboard')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold font-medium hover:bg-yellow-400 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Discover</a>
-          <a href="{{route('dashboard')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold font-medium hover:bg-yellow-400 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">My Playlist</a>
+          <a href="{{route('playlist')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold font-medium hover:bg-yellow-400 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">My Playlist</a>
+          <a href="{{route('logout')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold font-medium hover:bg-yellow-400 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Logout</a>
+        @else
+          <a href="{{route('register')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold font-medium hover:bg-yellow-400 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Create account</a>
+          <a href="{{route('login')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold font-medium hover:bg-yellow-400 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Login</a>
         @endauth
-        <a href="{{route('register')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold font-medium hover:bg-yellow-400 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Create account</a>
-        <a href="{{route('login')}}" class="mt-1 block px-3 py-2 rounded-md text-white font-semibold font-medium hover:bg-yellow-400 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out">Login</a>
       </div>
     </div>
   </div>
